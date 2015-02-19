@@ -12,5 +12,5 @@
 */
 
 Route::get('/', 'WelcomeController@index');
-Route::get('/songs/search', 'SongsController@search');
-Route::get('/songs','SongsController@results');
+Route::get('/dvds/search', 'DVDsController@search');
+Route::get('/dvds','DVDsController@results');
