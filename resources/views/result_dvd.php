@@ -7,7 +7,7 @@
 <body> 
 
 <p>
-        You searched for <?php echo $dvd_title ?> in genre <?php echo $genre_select ?> with rating <?php echo $rating_select ?>
+        You searched for dvd: <?php echo $dvd_title ?> in genre <?php echo $genre_select ?> with rating <?php echo $rating_select ?>
     </p>
 
 <table class="table table-striped table-hover">
@@ -25,7 +25,7 @@
         <tbody>
             <?php foreach($dvds as $dvd) : ?>
                 <tr>
-                    <td><?php echo $dvd->title ?></td>
+                    <td><?php echo $dvd->title ?>&nbsp<a href="dvds/<?php echo $dvd->dvd_id ?>">Review</a></td>
                     <td><?php echo $dvd->rating_name ?></td>
                     <td><?php echo $dvd->genre_name ?></td>
                     <td><?php echo $dvd->label_name ?></td>
