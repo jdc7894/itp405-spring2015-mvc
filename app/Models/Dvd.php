@@ -1,9 +1,10 @@
 <?php 
 namespace App\Models;
 use DB;
-
-Class Dvd 
+use Illuminate\Database\Eloquent\Model;
+class Dvd extends Model
 {
+    protected $table = 'dvds';
     public function search($term, $genre, $rating)
     {
         $query = DB::table('dvds')
@@ -84,5 +85,30 @@ Class Dvd
         $query
             ->where('dvds.id', '=', $id);
         return $query->first();  
+    }
+    public function genre()
+    {
+        return $this->belongsTo('\App\Models\Genre');
+    }
+    public function reviews()
+    {
+        return $this->belongsTo('\App\Models\Review');
+    }
+    
+    public function label()
+    {
+        return $this->belongsTo('\App\Models\Label');
+    }
+    public function sound()
+    {
+        return $this->belongsTo('\App\Models\Sound');
+    }
+    public function rating()
+    {
+        return $this->belongsTo('\App\Models\Rating');
+    }
+    public function format()
+    {
+        return $this->belongsTo('\App\Models\Format');
     }
 }

@@ -48,6 +48,10 @@
             </div>
           </div>
         </fieldset>
+        <h3>Genres</h4>
+                <?php foreach ($genres as $genre): ?>
+                  <li><a href="/genres/<?php echo $genre->genre_name ?>/dvds"><?php echo $genre->genre_name ?></li>
+                <?php endforeach; ?>
       </form>
     </div>
     <div class="clearfix"></div>

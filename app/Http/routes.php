@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Dvd;
+use App\Models\Artist; 
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,7 +14,10 @@
 */
 
 Route::get('/', 'WelcomeController@index');
+Route::post('/dvds/insert', 'DVDsController@insert');
 Route::get('/dvds/search', 'DVDsController@search');
+Route::get('/genres/{genreName}/dvds', 'DvdsController@genre');
+Route::get('/dvds/create','DVDsController@create');	
 Route::get('/dvds/{id}', 'DVDsController@dvd_details');
 Route::get('/dvds','DVDsController@results');	
 Route::post('/reviews/new', 'DVDsController@review');
