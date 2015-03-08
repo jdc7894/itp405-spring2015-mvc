@@ -19,8 +19,19 @@
         <fieldset>
           
           <div class="form-group">
+            <?php foreach ($movies as $movie): ?>
             <p>
-                Genre: <?php echo $dvd->genre_name ?>
+            Critic Score: <?php echo $movie->ratings->critics_score ?>
+            <br> Audience Score: <?php echo $movie->ratings->audience_score ?>
+            <br> Poster: <img src="<?php echo $movie->posters->original ?>">
+            <br> Runtime: <?php echo $movie->runtime ?>
+            <br> Abridged Cast:  <br>
+              <?php foreach($movie->abridged_cast as $cast) : ?>
+                  <?php echo $cast->name ?>
+                  <br> 
+              <?php endforeach; ?>
+            <?php endforeach; ?>
+            Genre: <?php echo $dvd->genre_name ?>
             <br>Rating: <?php echo $dvd->rating_name ?>
             <br>Label: <?php echo $dvd->label_name ?>
             <br>Sound: <?php echo $dvd->sound_name ?>

@@ -9,6 +9,7 @@ use App\Models\Genre;
 use App\Models\Rating;
 use App\Models\Label;
 use App\Models\Sound;
+use App\Services\RottenTomatoes; 
 
 
 class DVDsController extends Controller {
@@ -45,12 +46,16 @@ class DVDsController extends Controller {
 
 	public function dvd_details($id)
 	{
-		 $dvd = Dvd::getDVD($id);
-		 $reviews = Review::getReviewForDVD($id);
-		 return view('dvd_details', [
+		$dvd = Dvd::getDVD($id);
+		$dvd_title = $dvd->title;
+		$dvd_title = str_replace(' ', '+', $dvd_title);
+		$reviews = Review::getReviewForDVD($id);
+		$rottenData = RottenTomatoes::search($dvd_title,$id);
+		return view('dvd_details', [
 		 		'dvd' => $dvd,
-		 		'reviews' => $reviews
-		 	]);
+		 		'reviews' => $reviews,
+		 		'movies' => $rottenData->movies
+		]);
 	}
 
 	public function review(Request $request) 
